@@ -10,19 +10,18 @@ quay.io/ukhomeofficedigital/srrs-tooling:latest
 1) Create a srrs-tooling pod:
 kubectl apply -f srrs-tooling.yaml
 
-2) Connect to pod
-then bash into it:
+2) Connect to pod (start bash):
 kubectl exec -it srrs-tooling bash
-
 
 3) Export AWS credentials (from within pod):
 export AWS_ACCESS_KEY_ID=[your access key id]
 export AWS_SECRET_ACCESS_KEY=[your secret access key]
 
+
 # How to mount PVC (Persistent Volume Claim)?
 1) Uncomment lines between --- PVC BEGIN --- and --- PVC END --- (volumes and volumeMounts sections) in srrs-tooling.yaml
 
-2) Create PVC (50 GB):
+2) Create Persistent Volume Claim (50 GB):
 kubectl apply -f srrs-tooling-pvc.yaml
 
 3) Create srrs-tooling pod:
