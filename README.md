@@ -31,5 +31,6 @@ kubectl apply -f srrs-tooling-pvc.yaml
 3) Create srrs-tooling pod:
 kubectl apply -f srrs-tooling.yaml
 
-Note: PVC mounts an Amazon Elastic Block Storage volume which can be costly. Please check costs here:
+Note: PVC mounts an Amazon Elastic Block Storage volume which can be costly.
+Please check costs here:
 https://aws.amazon.com/ebs/pricing/
