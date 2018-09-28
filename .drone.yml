@@ -1,0 +1,10 @@
+pipeline:
+  build:
+    image: docker:1.11
+    secrets:
+      - quay_username
+      - quay_password
+    commands:
+      - /bin/sh ./ci-build.sh ${DRONE_BUILD_NUMBER} quay.io/ukhomeofficedigital/srrs-tooling $${DRONE_COMMIT_SHA} $${QUAY_USERNAME} $${QUAY_PASSWORD}
+    when:
+      event: push
