@@ -6,7 +6,7 @@ Also contains a sample of Persistent Volume Claim and Drone pipeline.
 Docker image is available from:
 quay.io/ukhomeofficedigital/srrs-tooling:latest
 
-Let me know if you want other tools:
+Please let me know if you want other tools and I will add them in:
 leszek.sliwko@digital.homeoffice.gov.uk
 
 
