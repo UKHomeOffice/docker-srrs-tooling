@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: srrs-tooling
+spec:
+  securityContext:
+    runAsUser: 1111
+    fsGroup: 1111
+#  --- PVC BEGIN ---
+#  volumes:
+#    - name: srrs-tooling-vol
+#      persistentVolumeClaim:
+#        claimName: srrs-tooling-vol
+#  --- PVC END ---
+  containers:
+  - name: tools
+    image: quay.io/ukhomeofficedigital/srrs-tooling:latest
+    resources:
+      limits:
+        cpu: 400m
+        memory: 1Gi
+      requests:
+        cpu: 200m
+        memory: 500Mi
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1111
+    command: [ "/bin/sh", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+    ports:
+    - containerPort: 8080
+      name: toolset
+#  --- PVC BEGIN ---
+#    volumeMounts:
+#    - mountPath: "/volume50g"
+#      name: srrs-tooling-vol
+#      readOnly: false
+#  --- PVC END ---
