@@ -2,7 +2,7 @@
 Tooling image with AWS, MySQL cli and few more tools. Once created, pod will continue working till terminated. Also contains a sample of Persistent Volume Claim and Drone pipeline.
 
 Docker image is available from:
-quay.io/ukhomeofficedigital/srrs-tooling:latest
+https://quay.io/repository/ukhomeofficedigital/srrs-tooling?tag=latest&tab=tags
 
 Please let me know if you want other tools and I will add them in:
 leszek.sliwko@digital.homeoffice.gov.uk
