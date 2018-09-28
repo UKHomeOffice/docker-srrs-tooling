@@ -1,9 +1,13 @@
 # docker-srrs-tooling
-Tooling image with AWS, MySQL cli and few more tools
-Also contains sample of Persistent Volume Claim and Drone pipeline
+Tooling image with AWS, MySQL cli and few more tools.
+
+Also contains a sample of Persistent Volume Claim and Drone pipeline.
 
 Docker image is available from:
 quay.io/ukhomeofficedigital/srrs-tooling:latest
+
+Let me know if you want other tools:
+leszek.sliwko@digital.homeoffice.gov.uk
 
 
 # How to use?
@@ -26,3 +30,6 @@ kubectl apply -f srrs-tooling-pvc.yaml
 
 3) Create srrs-tooling pod:
 kubectl apply -f srrs-tooling.yaml
+
+Note: PVC mounts an Amazon Elastic Block Storage volume which can be costly. Please check costs here:
+https://aws.amazon.com/ebs/pricing/
