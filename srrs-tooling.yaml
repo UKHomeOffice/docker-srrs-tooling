@@ -32,7 +32,7 @@ spec:
       name: toolset
 #  --- PVC BEGIN ---
 #    volumeMounts:
-#    - mountPath: "/volume50g"
+#    - mountPath: "/volume100g"
 #      name: srrs-tooling-vol
 #      readOnly: false
 #  --- PVC END ---
