@@ -17,7 +17,8 @@ RUN \
 RUN \
     apk update && \
     apk fetch openjdk8 && \
-    apk add openjdk8
+    apk add openjdk8 && \
+    rm /var/cache/apk/*
 
 
 RUN adduser -u 1111 -S user
