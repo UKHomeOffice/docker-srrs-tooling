@@ -13,6 +13,13 @@ RUN \
 	apk --purge -v del py-pip && \
 	rm /var/cache/apk/*
 
+
+RUN \
+    apk update && \
+    apk fetch openjdk8 && \
+    apk add openjdk8
+
+
 RUN adduser -u 1111 -S user
 
 WORKDIR /home/user
