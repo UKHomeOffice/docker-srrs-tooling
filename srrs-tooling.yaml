@@ -7,10 +7,10 @@ spec:
     runAsUser: 1111
     fsGroup: 1111
 #  --- PVC BEGIN ---
-#  volumes:
-#    - name: srrs-tooling-vol
-#      persistentVolumeClaim:
-#        claimName: srrs-tooling-vol
+  volumes:
+    - name: srrs-tooling-vol
+      persistentVolumeClaim:
+        claimName: srrs-tooling-vol
 #  --- PVC END ---
   containers:
   - name: tools
@@ -31,8 +31,8 @@ spec:
     - containerPort: 8080
       name: toolset
 #  --- PVC BEGIN ---
-#    volumeMounts:
-#    - mountPath: "/volume100g"
-#      name: srrs-tooling-vol
-#      readOnly: false
+    volumeMounts:
+    - mountPath: "/volume100g"
+      name: srrs-tooling-vol
+      readOnly: false
 #  --- PVC END ---
