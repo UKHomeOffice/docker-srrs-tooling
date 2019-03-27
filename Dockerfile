@@ -25,6 +25,8 @@ RUN adduser -u 1111 -S user
 
 WORKDIR /home/user
 
+ENV JAVA_HOME /usr/lib/jvm/default-jvm
+
 USER 1111
 
 CMD ["/bin/sh"]
