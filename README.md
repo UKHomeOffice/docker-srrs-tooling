@@ -1,5 +1,5 @@
 # docker-srrs-tooling
-Tooling image with AWS, MySQL cli and few more tools. Once created, pod will continue working till terminated. Also contains a sample of Persistent Volume Claim and Drone pipeline.
+Tooling image with AWS, MySQL cli, PostGre SQL, Java8 and few more tools. Once created, pod will continue working till terminated. Also contains a sample of Persistent Volume Claim and Drone pipeline.
 
 Docker image is available from:
 https://quay.io/repository/ukhomeofficedigital/srrs-tooling?tag=latest&tab=tags
