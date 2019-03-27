@@ -2,7 +2,7 @@ FROM alpine:latest
 
 
 RUN \
-    apk --update add bash curl bind-tools jq mysql-client git && \
+    apk --update add bash curl bind-tools jq mysql-client postgresql-client git && \
     rm -rf /var/cache/apk/*
 
 
