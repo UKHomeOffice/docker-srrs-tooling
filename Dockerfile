@@ -18,6 +18,7 @@ RUN \
     apk update && \
     apk fetch openjdk8 && \
     apk add openjdk8 && \
+    apk add --no-cache nss && \
     rm /var/cache/apk/*
 
 
