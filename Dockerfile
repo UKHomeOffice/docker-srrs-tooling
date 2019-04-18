@@ -26,7 +26,12 @@ RUN adduser -u 1111 -S user
 
 ENV JAVA_HOME /usr/lib/jvm/default-jvm
 
-ADD --chown=1111:1111 apps/* /home/user/
+#Unpack all files in apps
+ADD apps/* /home/user/
+
+#set owner for unpacked files (this might be slow)
+#Note: --chown on ADD works only on archive itself
+RUN chown -R 1111 /home/user/
 
 WORKDIR /home/user
 
