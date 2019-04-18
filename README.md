@@ -28,7 +28,7 @@ export AWS_SECRET_ACCESS_KEY=[your secret access key]
 # How to mount PVC (Persistent Volume Claim)?
 1) Uncomment lines between --- PVC BEGIN --- and --- PVC END --- (volumes and volumeMounts sections) in srrs-tooling.yaml
 
-2) Create Persistent Volume Claim (50 GB):
+2) Create Persistent Volume Claim (100 GB):
 ```
 kubectl apply -f srrs-tooling-pvc.yaml
 ```
@@ -43,7 +43,7 @@ https://aws.amazon.com/ebs/pricing/
 
 
 # Apps folder
-Files in this folder will be unpacked and copied over to the resulting image (into user's home folder).
+Files in apps folder are unpacked and copied over to the resulting Docker image (into user's home folder).
 
 Note: ADD command supports local-only tar extraction which uses tar tool for extraction. Tar command works with any supported compression method like tar, tar.xz, tar.gz, etc.
-https://docs.docker.com/engine/reference/builder/#add
+For further references see: https://docs.docker.com/engine/reference/builder/#add
