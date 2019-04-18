@@ -1,8 +1,8 @@
 # docker-srrs-tooling
-Tooling image with AWS, MySQL cli, PostGre SQL, Java8 and few more tools. Once created, pod will continue working till terminated. Also contains a sample of Persistent Volume Claim and Drone pipeline.
+Tooling image with AWS, MySQL cli and few more tools. Once created, pod will continue working till terminated. Also contains a sample of Persistent Volume Claim and Drone pipeline.
 
 Docker image is available from:
-https://quay.io/repository/ukhomeofficedigital/srrs-tooling?tag=latest&tab=tags
+quay.io/ukhomeofficedigital/srrs-tooling:latest
 
 Please let me know if you want other tools and I will add them in:
 leszek.sliwko@digital.homeoffice.gov.uk
@@ -40,3 +40,10 @@ kubectl apply -f srrs-tooling.yaml
 
 Note: PVC mounts an Amazon Elastic Block Storage volume which can be costly. Please check costs here:
 https://aws.amazon.com/ebs/pricing/
+
+
+# Apps folder
+Files in this folder will be unpacked and copied over to the resulting image (into user's home folder).
+
+Note: ADD command supports local-only tar extraction which uses tar tool for extraction. Tar command works with any supported compression method like tar, tar.xz, tar.gz, etc.
+https://docs.docker.com/engine/reference/builder/#add
