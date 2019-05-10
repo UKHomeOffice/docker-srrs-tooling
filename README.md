@@ -43,7 +43,7 @@ https://aws.amazon.com/ebs/pricing/
 
 
 # Apps folder
-Files in apps folder are unpacked and copied over to the resulting Docker image (into user's home folder).
+Files in apps folder are unpacked and copied over to the resulting Docker image (into user's home folder). The user's permissions are then set.
 
 Note: ADD command supports local-only tar extraction which uses tar tool for extraction. Tar command works with any supported compression method like tar, tar.xz, tar.gz, etc.
 
