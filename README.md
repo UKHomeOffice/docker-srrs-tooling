@@ -46,4 +46,5 @@ https://aws.amazon.com/ebs/pricing/
 Files in apps folder are unpacked and copied over to the resulting Docker image (into user's home folder).
 
 Note: ADD command supports local-only tar extraction which uses tar tool for extraction. Tar command works with any supported compression method like tar, tar.xz, tar.gz, etc.
+
 For further references see: https://docs.docker.com/engine/reference/builder/#add
