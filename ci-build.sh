@@ -23,19 +23,11 @@ if [ "$#" -ne 5 ]; then
     exit 1
 fi
 
-echo "QUAY_USERNAME: ${QUAY_USERNAME}"
-echo "PWD: ${PWD}"
-
-export DOCKER_CONTAINER_NAME=tmp-${BUILD_NUMBER}
-echo "DOCKER_CONTAINER_NAME: ${DOCKER_CONTAINER_NAME}"
-
-echo "-----"
-echo "PWD folder:"
-ls -a ${PWD}
-echo "-----"
+echo "Username: ${QUAY_USERNAME}"
 
 echo "-----"
 echo "Building image ${DOCKER_IMAGE_NAME}"
+
 if docker build -t ${DOCKER_IMAGE_NAME}:${BUILD_COMMIT_SHA} -t ${DOCKER_IMAGE_NAME}:latest -f Dockerfile . ; then
     echo "Finished building docker image"
 else
@@ -44,9 +36,28 @@ else
 fi
 
 echo "-----"
-echo "Pushing new Docker image: ${DOCKER_IMAGE_NAME}"
-docker login -u=${QUAY_USERNAME} -p=${QUAY_PASSWORD} quay.io
-docker push ${DOCKER_IMAGE_NAME}:${BUILD_COMMIT_SHA}
-docker push ${DOCKER_IMAGE_NAME}:latest
+echo "Pushing new docker image: ${DOCKER_IMAGE_NAME}"
+
+if docker login -u=${QUAY_USERNAME} -p=${QUAY_PASSWORD} quay.io ; then
+    echo "Logged in to quay.io"
+else
+    echo "Cannot login to quay.io Please check user and password"
+    exit 1
+fi
+
+if docker push ${DOCKER_IMAGE_NAME}:${BUILD_COMMIT_SHA} ; then
+    echo "Pushed ${DOCKER_IMAGE_NAME}:${BUILD_COMMIT_SHA} image to quay.io"
+else
+    echo "Cannot push image to quay.io Please check write permissions"
+    exit 1
+fi
+
+# Tag image as latest
+if docker push ${DOCKER_IMAGE_NAME}:latest ; then
+    echo "Pushed ${DOCKER_IMAGE_NAME}:latest image to quay.io"
+else
+    echo "Cannot push image to quay.io Please check write permissions"
+    exit 1
+fi
 
 exit 0
