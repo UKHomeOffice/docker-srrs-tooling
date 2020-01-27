@@ -3,7 +3,7 @@ FROM alpine:latest
 
 RUN \
     apk update && \
-    apk --update add bash curl bind-tools jq mysql-client postgresql-client git lynx && \
+    apk --update add bash curl bind-tools jq mysql-client postgresql-client git lynx openssh nano && \
     rm -rf /var/cache/apk/*
 
 
@@ -24,6 +24,7 @@ RUN \
 
 RUN adduser -u 1111 -S user
 
+#setup JAVA_HOME (for jmeter)
 ENV JAVA_HOME /usr/lib/jvm/default-jvm
 
 #Unpack all files in apps
