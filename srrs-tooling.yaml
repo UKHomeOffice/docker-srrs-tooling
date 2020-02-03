@@ -17,8 +17,8 @@ spec:
     image: quay.io/ukhomeofficedigital/srrs-tooling:latest
     resources:
       limits:
-        cpu: 400m
-        memory: 1Gi
+        cpu: 4000m
+        memory: 10Gi
       requests:
         cpu: 200m
         memory: 500Mi
@@ -31,8 +31,8 @@ spec:
     - containerPort: 8080
       name: toolset
 #  --- PVC BEGIN ---
-    volumeMounts:
-    - mountPath: "/volume100g"
-      name: srrs-tooling-vol
-      readOnly: false
+#    volumeMounts:
+#    - mountPath: "/volume100g"
+#      name: srrs-tooling-vol
+#      readOnly: false
 #  --- PVC END ---

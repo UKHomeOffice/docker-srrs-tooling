@@ -2,7 +2,8 @@ FROM alpine:latest
 
 
 RUN \
-    apk --update add bash curl bind-tools jq mysql-client git && \
+    apk update && \
+    apk --update add bash curl bind-tools jq mysql-client postgresql-client git lynx openssh nano && \
     rm -rf /var/cache/apk/*
 
 
@@ -13,7 +14,26 @@ RUN \
 	apk --purge -v del py-pip && \
 	rm /var/cache/apk/*
 
+
+RUN \
+    apk update && \
+    apk fetch openjdk8 && \
+    apk add openjdk8 && \
+    apk add --no-cache nss && \
+    rm /var/cache/apk/*
+
+
 RUN adduser -u 1111 -S user
+
+#setup JAVA_HOME (for jmeter)
+ENV JAVA_HOME /usr/lib/jvm/default-jvm
+
+#Unpack all files in apps
+ADD apps/* /home/user/
+
+#set owner for unpacked files (this might be slow)
+#Note: --chown on ADD works only on archive itself
+RUN chown -R 1111 /home/user/
 
 WORKDIR /home/user
 
