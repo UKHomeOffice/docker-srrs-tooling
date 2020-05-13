@@ -31,9 +31,9 @@ spec:
     ports:
     - containerPort: 8080
       name: toolset
-#  --- PVC BEGIN ---
-#    volumeMounts:
-#    - mountPath: "/volume100g"
-#      name: srrs-tooling-vol
-#      readOnly: false
-#  --- PVC END ---
+ # --- PVC BEGIN ---
+    volumeMounts:
+    - mountPath: "/volume100g"
+      name: srrs-tooling-vol
+      readOnly: false
+ # --- PVC END ---
