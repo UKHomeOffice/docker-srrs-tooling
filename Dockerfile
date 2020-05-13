@@ -3,7 +3,7 @@ FROM alpine:latest
 
 RUN \
     apk update && \
-    apk --update add bash curl bind-tools jq mysql-client postgresql-client git lynx openssh nano httrack && \
+    apk --update add bash curl bind-tools jq mysql-client postgresql-client git lynx openssh nano && \
     rm -rf /var/cache/apk/*
 
 
