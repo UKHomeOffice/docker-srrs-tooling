@@ -24,11 +24,26 @@ if [ "$#" -ne 5 ]; then
 fi
 
 echo "Username: ${QUAY_USERNAME}"
-
 echo "-----"
+
+i="0"
+echo "Waiting for Docker to launch..."
+while ( ! docker stats --no-stream > /dev/null ); do
+    # Docker takes a few seconds to initialize
+    i=$(( i + 1 ))
+    if [[ "$i" -gt 60 ]]; then
+        echo "Failed starting docker demon"
+        exit 1
+    else
+        echo "Waiting for Docker to launch... ($i sec)"
+        sleep 1
+    fi
+done
+
+
 echo "Building image ${DOCKER_IMAGE_NAME}"
 
-if docker build -t ${DOCKER_IMAGE_NAME}:${BUILD_COMMIT_SHA} -t ${DOCKER_IMAGE_NAME}:latest -f Dockerfile . ; then
+if docker build -t ${DOCKER_IMAGE_NAME}:${BUILD_COMMIT_SHA} -t ${DOCKER_IMAGE_NAME}:latest --no-cache -f Dockerfile . ; then
     echo "Finished building docker image"
 else
     echo "Failed building docker image"
