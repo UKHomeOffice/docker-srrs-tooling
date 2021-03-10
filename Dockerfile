@@ -1,12 +1,12 @@
 FROM alpine:latest
 
-
+#install tools
 RUN \
     apk update && \
     apk --update add bash curl bind-tools jq mysql-client postgresql-client git lynx openssh nano && \
     rm -rf /var/cache/apk/*
 
-
+#install AWS cli
 RUN \
 	mkdir -p /aws && \
 	apk -Uuv add groff less python3 py-pip gnupg && \
@@ -14,7 +14,7 @@ RUN \
 	apk --purge -v del py-pip && \
 	rm -rf /var/cache/apk/*
 
-
+#install Java
 RUN \
     apk update && \
     apk fetch openjdk8 && \
