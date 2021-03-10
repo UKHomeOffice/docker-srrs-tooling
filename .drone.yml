@@ -1,10 +1,30 @@
-pipeline:
-  build:
-    image: docker:1.11
-    secrets:
-      - quay_username
-      - quay_password
-    commands:
-      - /bin/sh ./ci-build.sh ${DRONE_BUILD_NUMBER} quay.io/ukhomeofficedigital/srrs-tooling $${DRONE_COMMIT_SHA} $${QUAY_USERNAME} $${QUAY_PASSWORD}
-    when:
-      event: push
+---
+kind: pipeline
+name: default
+type: kubernetes
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  pull: if-not-exists
+  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+  commands:
+  - /bin/sh ./ci-build.sh ${DRONE_BUILD_NUMBER} quay.io/ukhomeofficedigital/srrs-tooling $${DRONE_COMMIT_SHA} $${QUAY_USERNAME} $${QUAY_PASSWORD}
+  environment:
+    QUAY_PASSWORD:
+      from_secret: quay_password
+    QUAY_USERNAME:
+      from_secret: quay_username
+  when:
+    event:
+    - push
+
+
+services:
+- name: docker-service
+  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/dind
+
+...
