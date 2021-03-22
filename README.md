@@ -5,7 +5,7 @@ Docker image is available from:
 quay.io/ukhomeofficedigital/srrs-tooling:latest
 
 Please let me know if you want other tools and I will add them in:
-leszek.sliwko@digital.homeoffice.gov.uk
+leszek.sliwko@digital.homeoffice.gov.uk or lsliwko@gmail.com
 
 
 # How to use?
