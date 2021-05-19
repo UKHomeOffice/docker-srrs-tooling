@@ -11,7 +11,6 @@ RUN \
 	mkdir -p /aws && \
 	apk -Uuv add groff less python3 py-pip gnupg && \
 	pip install awscli && \
-	apk --purge -v del py-pip && \
 	rm -rf /var/cache/apk/*
 
 #install Java
