@@ -28,7 +28,7 @@ export AWS_SECRET_ACCESS_KEY=[your secret access key]
 # How to mount PVC (Persistent Volume Claim)?
 1) Uncomment lines between --- PVC BEGIN --- and --- PVC END --- (volumes and volumeMounts sections) in srrs-tooling.yaml
 
-2) Create Persistent Volume Claim (100 GB):
+2) Create Persistent Volume Claim (500 GB):
 ```
 kubectl apply -f srrs-tooling-pvc.yaml
 ```
